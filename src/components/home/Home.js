@@ -48,7 +48,6 @@ class Home extends Component {
             selectedSymbols.splice(index, 1);
         }
         this.setState({ selectedSymbols })
-        console.log(this.state.selectedSymbols);
     }
 
     render() {
@@ -56,7 +55,7 @@ class Home extends Component {
             <div>
                 <div className="Action">
                     <input name="search" placeholder="Search" onChange={e => this.doFilter(e.target.value)} />
-                    <Link to={`/compare/}`}><button type="submit" >Compare</button></Link>
+                    <Link to={`/compare/${this.state.selectedSymbols}`}><button type="submit" disabled={this.state.selectedSymbols.length === 0}>Compare</button></Link>
                 </div>
                 <Table symbols={this.state.symbols} checked={this.selectedSymbols} />
             </div>

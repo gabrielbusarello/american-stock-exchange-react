@@ -11,8 +11,11 @@ const useQuery = () => {
 }
 const getFinancialStatements = async (symbol) => {
     return await getIncomeStatement(symbol).then((response) => {
-        // console.log(response.data.financials.map((fin) => fin.Revenue));
-        return response.data.financials.reverse();
+        if (Object.entries(response.data).length > 0) {
+            return response.data.financials.reverse();
+        } else {
+            return [];
+        }
     })
 };
 
@@ -39,9 +42,9 @@ function About() {
                 </div>
             </div>
             <div className="charts">
-                <Chart financialStatements={financialStatements} type="revenue" />
-                <Chart financialStatements={financialStatements} type="ebitda" />
-                <Chart financialStatements={financialStatements} type="generalBalance" />
+                <Chart financialStatements={financialStatements} type="revenue" name={symbol} />
+                <Chart financialStatements={financialStatements} type="ebitda" name={symbol} />
+                <Chart financialStatements={financialStatements} type="generalBalance" name={symbol} />
             </div>
         </div>
     );

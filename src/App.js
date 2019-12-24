@@ -17,14 +17,14 @@ function App() {
       <Router>
         <div>
           <Switch>
-            <Route path="/">
-              <Home />
-            </Route>
             <Route path="/about/:symbol">
               <About />
             </Route>
             <Route path="/compare/:symbols">
               <Compare />
+            </Route>
+            <Route path="/">
+              <Home />
             </Route>
           </Switch>
         </div>

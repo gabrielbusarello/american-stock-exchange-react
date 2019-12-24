@@ -21,7 +21,7 @@ class Table extends Component {
     getRow = data => {
         return (
             <tr key={data.symbol}>
-                <td><input type="checkbox" id={data.symbol} value={data.symbol} onChange={this.handleInputChange} /><label htmlFor={data.symbol}></label></td>
+                <td><input type="checkbox" id={data.symbol} value={data.symbol} onChange={this.props.checked} /><label htmlFor={data.symbol}></label></td>
                 <td>{data.symbol}</td>
                 <td>{data.name}</td>
                 <td>U$ {data.price}</td>
@@ -32,7 +32,7 @@ class Table extends Component {
 
     getEmptyState = () => (
         <tr>
-            <td colSpan="5">
+            <td colSpan="5" style={{ textAlign: 'center' }}>
                 {'Busca sem resultado'}
             </td>
         </tr>

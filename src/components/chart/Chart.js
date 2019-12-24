@@ -2,10 +2,9 @@ import React, { useEffect } from 'react';
 
 import Highcharts from 'highcharts';
 
-function Chart({ financialStatements, type }) {
-
+function Chart({ financialStatements, type, name }) {
     const createChartRevenue = () => {
-        Highcharts.chart('revenue', {
+        Highcharts.chart('revenue' + (name || ''), {
             chart: {
                 // type: 'spline',
                 zoomType: 'xy'
@@ -58,7 +57,7 @@ function Chart({ financialStatements, type }) {
     }
 
     const createChartEbitda = () => {
-        Highcharts.chart('ebitda', {
+        Highcharts.chart('ebitda' + (name || ''), {
             chart: {
                 // type: 'spline',
                 zoomType: 'xy'
@@ -116,7 +115,7 @@ function Chart({ financialStatements, type }) {
     }
 
     const createChartGeneralBalance = () => {
-        Highcharts.chart('generalBalance', {
+        Highcharts.chart('generalBalance' + (name || ''), {
             // chart: {
             //     // type: 'spline',
             //     zoomType: 'xy'
@@ -178,7 +177,7 @@ function Chart({ financialStatements, type }) {
     })
 
     return (
-        <div id={type} style={{ width: '100%', height: '400px' }}></div>
+        <div id={type + (name || '')} style={{ width: '100%', height: '400px' }}></div>
     );
 }
 
