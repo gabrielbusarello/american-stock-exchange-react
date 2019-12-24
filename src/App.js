@@ -1,11 +1,35 @@
 import React from 'react';
-import logo from './logo.svg';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+import Header from './components/header/Header';
+import Home from './components/home/Home';
+import About from './components/about/About';
+import Compare from './components/compare/Compare';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
+      <Header />
+      <Router>
+        <div>
+          <Switch>
+            <Route path="/">
+              <Home />
+            </Route>
+            <Route path="/about/:symbol">
+              <About />
+            </Route>
+            <Route path="/compare/:symbols">
+              <Compare />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
+      {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
@@ -18,7 +42,7 @@ function App() {
         >
           Learn React
         </a>
-      </header>
+      </header> */}
     </div>
   );
 }

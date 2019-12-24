@@ -1,0 +1,66 @@
+table {
+    margin-top: 2rem;
+    width: 100%;
+    border-collapse: collapse;
+    border-right: 1px solid #c0ccda;
+    border-left: 1px solid #c0ccda;
+    border-bottom: 1px solid #c0ccda;
+    color: #47525e;
+    table-layout: fixed;
+}
+
+thead, td, th {
+    border-top: 1px solid #c0ccda;
+    padding: 0;
+}
+
+table thead tr {
+    text-align: left;
+}
+
+table tr td, tr th {
+    padding: 12px 0;
+}
+
+table tbody tr:nth-child(odd) {
+    background: #fff;
+}
+
+table tbody tr:nth-child(even) {
+    background: #f9fafc;
+}
+
+table thead {
+    background: #eff2f7;
+}
+
+table tr td input[type=checkbox] {
+    display:none;
+}
+table tr td label {
+    cursor: pointer;
+}
+table tr td input[type=checkbox] + label:before {
+    border: 2px solid #b3bcc8;
+    content: "\00a0";
+    display: inline-block;
+    height: 20px;
+    margin: 0 0 0 .90rem;
+    width: 20px;
+    border-radius: 50px;
+}
+table tr td input[type=checkbox]:checked + label:before {
+    border: 2px solid #47525e;
+    background: #47525e;
+    color: #fafafa;
+    content: "\2713";
+    text-align: center;
+    line-height: 20px;
+}
+table tr td input[type=checkbox]:checked + label:after {
+    font-weight: bold;
+}
+
+table tr td img {
+    width: 20px;
+}

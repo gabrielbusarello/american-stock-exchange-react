@@ -1,0 +1,19 @@
+.header {
+    color: #47525e;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.header img {
+    width: 30px;
+    margin-right: 2rem;
+}
+
+.header h1, .header h3 {
+    margin: 0;
+}
+
+.charts div {
+    margin-top: 1rem;
+}
