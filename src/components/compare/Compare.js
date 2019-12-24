@@ -8,10 +8,14 @@ import returnButton from '../../assets/return-button.svg';
 
 const getFinancialStatements = async (symbols) => {
     return await getIncomeStatement(symbols).then((response) => {
-        for (const financialStatements of response.data.financialStatementList) {
-            financialStatements.financials.reverse();
+        if (Object.entries(response.data).length > 0) {
+            for (const financialStatements of response.data.financialStatementList) {
+                financialStatements.financials.reverse();
+            }
+            return response.data.financialStatementList.reverse();
+        } else {
+            return [];
         }
-        return response.data.financialStatementList.reverse();
     })
 };
 
@@ -26,6 +30,22 @@ function Compare() {
         fetchFinancialStatements();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [symbols]);
+
+    const renderCharts = () => {
+        if (financialStatements.length > 0) {
+            return (
+                <div className="charts">
+                    {getCharts(financialStatements, getChart)}
+                </div>
+            )
+        } else {
+            return (
+                <div className="charts">
+                    <h1>Sem informações</h1>
+                </div>
+            )
+        }
+    }
 
     const getCharts = (data, getChart) => {
         return data.map(item => {
@@ -51,9 +71,7 @@ function Compare() {
                     <h3>Entre: {symbols}</h3>
                 </div>
             </div>
-            <div className="charts">
-                {getCharts(financialStatements, getChart)}
-            </div>
+            {renderCharts()}
         </div>
     )
 }

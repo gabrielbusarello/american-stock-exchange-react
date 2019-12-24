@@ -32,6 +32,24 @@ function About() {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [symbol]);
 
+    const renderCharts = () => {
+        if (financialStatements.length > 0) {
+            return (
+                <div className="charts">
+                    <Chart financialStatements={financialStatements} type="revenue" name={symbol} />
+                    <Chart financialStatements={financialStatements} type="ebitda" name={symbol} />
+                    <Chart financialStatements={financialStatements} type="generalBalance" name={symbol} />
+                </div>
+            )
+        } else {
+            return (
+                <div className="charts">
+                    <h1>Sem informações</h1>
+                </div>
+            )
+        }
+    }
+
     return (
         <div>
             <div className="header">
@@ -41,11 +59,7 @@ function About() {
                     <h3>{query.get('name')}</h3>
                 </div>
             </div>
-            <div className="charts">
-                <Chart financialStatements={financialStatements} type="revenue" name={symbol} />
-                <Chart financialStatements={financialStatements} type="ebitda" name={symbol} />
-                <Chart financialStatements={financialStatements} type="generalBalance" name={symbol} />
-            </div>
+            {renderCharts()}
         </div>
     );
 }
